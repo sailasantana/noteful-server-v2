@@ -12,12 +12,15 @@ const serializeFolder = folder => ({
 });
 
 foldersRouter 
-    .route('api/folders')
+    .route('/')
     .get((req, res, next) => {
         FoldersService.getAllFolders(
+            //returns db connection url
             req.app.get('db')
         )
             .then(folders => {
+
+                console.log(folders.length)
                 res.json(folders.map(serializeFolder));
             })
             .catch(next);
@@ -48,7 +51,7 @@ foldersRouter
     });
 
 foldersRouter
-    .route('api/folders/:folder_id')
+    .route('/:folder_id')
     .all((req, res, next) => {
         FoldersService.getFolderById (
             req.app.get('db'),
