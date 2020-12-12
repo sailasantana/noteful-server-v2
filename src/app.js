@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
+//cors is middleware so if you put it beneath your endpoint it work access your server
 const cors = require('cors');
 const helmet = require('helmet');
 const {NODE_ENV} = require('./config');
